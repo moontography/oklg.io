@@ -31,10 +31,14 @@
               </div> -->
             </div>
             <h3 class>Tokenomics</h3>
-            <p class="text-muted mb-4">
-              Dynamic and conditional tokenomics with cutting edge, on-chain
+            <p class="text-muted mb-5">
+              Dynamic and conditional tokenomics with innovative, on-chain
               logical hooks
             </p>
+            <ul class="list-unstyled text-muted">
+              <li>420.69 billion total supply</li>
+              <li>10-14% buy/sell slippage</li>
+            </ul>
             <!-- <a href="javascript: void(0);" class="btn btn-outline-primary"
               >Learn More</a
             > -->
@@ -87,11 +91,12 @@
                   <i class="mdi mdi-database-lock"></i>
                 </div>
                 <h5 class="font-weight-bold mb-2 wc-title mt-4">
-                  2% buy back and burn
+                  2% buy back [and burn]
                 </h5>
                 <p class="text-muted mb-0 font-size-15 wc-subtitle">
-                  BRAND NEW: We built a mechanism to dynamically buy back &amp;
-                  burn any token!
+                  BRAND NEW: We built a mechanism to dynamically buy back any
+                  token. At that point we can burn them or distribute to $OKLG
+                  holders!
                 </p>
               </div>
             </div>

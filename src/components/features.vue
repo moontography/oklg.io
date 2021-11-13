@@ -1,5 +1,4 @@
 <script>
-import hljs from "highlightjs";
 import {
   LayoutIcon,
   LifeBuoyIcon,
@@ -8,27 +7,23 @@ import {
 } from "vue-feather-icons";
 export default {
   components: { LayoutIcon, LifeBuoyIcon, ServerIcon, RssIcon },
-  created() {
-    console.log("HL", hljs);
-    hljs.highlightAll();
-  },
 };
 </script>
 
 <template>
   <div>
     <!-- Features Start -->
-    <section class="section bg-light feather-bg-img" id="features">
+    <section class="section feather-bg-img" id="features">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
             <div class="text-center mb-5">
               <h3 class="title mb-3">
-                Cutting Edge Features
+                Innovative Features
               </h3>
               <p class="text-muted font-size-15">
-                We implemented brand new, never seen before dynamic logic in our
-                tokenomics to up the game while supporting our fellow crypto
+                We implemented brand new, never seen before dynamic features in
+                our contract to up the game while supporting our fellow crypto
                 communities.
               </p>
             </div>
@@ -54,14 +49,15 @@ export default {
               Creative Features
             </p>
             <h3 class="font-weight-semibold line-height-1_4 mb-4">
-              Buy back &amp; burn for frens
+              Buy back for frens
             </h3>
             <p class="text-muted font-size-15 mb-4">
-              By default our 2% buy back and burn fee will do just that for
-              $OKLG. But it doesn't stop there. We can change the token we buy
-              back and burn! New and upcoming project that we as a community
-              want to support? Let's temporarily support them by buying back
-              their token and burn supply to help push some green candles!
+              By default our 2% buy back fee will purchase and burn $OKLG to
+              raise the token floor price. But it doesn't stop there. We can
+              change the token we buy back, in addition to either burn it or
+              distribute to $OKLG holders! New and upcoming project that we as a
+              community want to support? Let's temporarily buy back and burn
+              their token to help push some green candles their way!
             </p>
             <!-- <p class="text-muted mb-2">
               <layout-icon class="icon-xs mr-1"></layout-icon>Donec pede justo
@@ -84,7 +80,7 @@ export default {
       </div>
     </section>
 
-    <section class="section feather-bg-img">
+    <section class="section bg-light feather-bg-img">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-5">
@@ -95,15 +91,17 @@ export default {
               Creative Features
             </p>
             <h3 class="font-weight-semibold line-height-1_4 mb-4">
-              Elevated rewards &amp; fee exclusion
+              Rewards booster &amp; fee exclusion
             </h3>
             <!-- <h3 class="font-weight-semibold line-height-1_4 mb-4">Build <b>community</b> & <b>conversion</b> with our suite of <b>social tool</b></h3> -->
             <p class="text-muted font-size-15 mb-4">
               By creating a smart contract that implements the following
               interface, we can dynamically elevate your native rewards &amp;
               exclude wallets from fees. Holding a minimum balance of another
-              token? Get elevated rewards. We will poll and periodically update
-              this logic and create a formal governance process in the future!
+              token? Get rewards boosted! Hold an NFT from a collection the
+              community likes? Get rewards boosted! We will poll and
+              periodically update this logic and create a formal governance
+              process in the future.
             </p>
             <!-- <p class="text-muted mb-2">
               <server-icon class="icon-xs mr-1"></server-icon>Donec pede justo

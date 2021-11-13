@@ -82,11 +82,11 @@ export default {
         </div>
       </section>
       <!-- Hero End -->
-      <Tokenomics />
       <Features />
+      <Tokenomics />
       <Roadmap />
       <!-- <Blog /> -->
-      <!-- <Contact /> -->
+      <Contact />
       <Footer />
     </div>
   </div>

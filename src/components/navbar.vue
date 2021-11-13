@@ -98,17 +98,17 @@ export default {
           <li class="nav-item">
             <a
               href="javascript: void(0);"
-              v-scroll-to="{ el: '#tokenomics', offset: -2 }"
+              v-scroll-to="{ el: '#features', offset: -2 }"
               class="nav-link"
-              >Tokenomics</a
+              >Innovation</a
             >
           </li>
           <li class="nav-item">
             <a
               href="javascript: void(0);"
-              v-scroll-to="{ el: '#features', offset: -2 }"
+              v-scroll-to="{ el: '#tokenomics', offset: -2 }"
               class="nav-link"
-              >Features</a
+              >Tokenomics</a
             >
           </li>
           <li class="nav-item">
@@ -119,15 +119,15 @@ export default {
               >Roadmap</a
             >
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <a
               href="javascript: void(0);"
-              v-scroll-to="{ el: '#blog', offset: -1 }"
+              v-scroll-to="{ el: '#rewards', offset: -1 }"
               class="nav-link"
-              >Blog</a
+              >Claim Rewards</a
             >
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a
               href="javascript: void(0);"
               v-scroll-to="{ el: '#contact', offset: -50 }"

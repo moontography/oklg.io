@@ -26,12 +26,17 @@
             <p class="text-muted font-weight-semibold">User / Month</p> -->
             <ul class="list-unstyled pricing-item mb-4">
               <li class="text-muted">
-                <i class="mdi mdi-check-circle"></i> BSC &amp; ETH Launch &amp;
-                Bridge
+                <i class="mdi mdi-check-circle text-success"></i> Launch on ETH
+                &amp; BSC
               </li>
-              <li class="text-muted">1,000 holders</li>
-              <li class="text-muted">CG and CMC listing</li>
-              <li class="text-muted">Marketing rampage</li>
+              <li class="text-muted">
+                <i class="mdi mdi-check-circle text-success"></i> ETH &lt;&gt;
+                BSC Bridge
+              </li>
+              <li class="text-muted">2,500 holders</li>
+              <li class="text-muted">CG and CMC Listing</li>
+              <li class="text-muted">ETH/token Rewards Dapp v1</li>
+              <li class="text-muted">Marketing Rampage</li>
             </ul>
             <!-- <a
               href="javascript: void(0);"
@@ -61,10 +66,11 @@
             <p class="text-muted font-weight-semibold">User / Month</p> -->
             <ul class="list-unstyled pricing-item mb-4">
               <li class="text-muted">10,000 holders</li>
-              <li class="text-muted">CEX Listings</li>
-              <li class="text-muted">Rug support fund</li>
-              <li class="text-muted">Game development</li>
-              <li class="text-muted">International marketing</li>
+              <li class="text-muted">CEX Listing(s)</li>
+              <li class="text-muted">Rug Support Fund</li>
+              <li class="text-muted">NFT Collection</li>
+              <li class="text-muted">Gamification Ecosystem</li>
+              <li class="text-muted">International Marketing</li>
             </ul>
             <!-- <a href="javascript: void(0);" class="btn btn-primary pr-btn"
               >Buy Now</a
@@ -93,8 +99,10 @@
             <ul class="list-unstyled pricing-item mb-4">
               <li class="text-muted">50,000 Holders</li>
               <li class="text-muted">Binance &amp; Coinbase Listing</li>
+              <li class="text-muted">Staking Rewards</li>
+              <li class="text-muted">$OKLG Collateral Lending</li>
               <li class="text-muted">DAO Launch</li>
-              <li class="text-muted">Charity Donations</li>
+              <li class="text-muted">$50,000 Charity Donations</li>
             </ul>
             <!-- <a
               href="javascript: void(0);"

@@ -5,7 +5,7 @@ import {
   LinkIcon,
   PhoneCallIcon,
   ClockIcon,
-  MapPinIcon
+  MapPinIcon,
 } from "vue-feather-icons";
 export default {
   components: {
@@ -14,26 +14,25 @@ export default {
     LinkIcon,
     PhoneCallIcon,
     ClockIcon,
-    MapPinIcon
-  }
+    MapPinIcon,
+  },
 };
 </script>
 <template>
   <!-- Contact Us Start -->
-  <section class="section bg-light" id="contact">
+  <section class="section" id="rewards">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6">
-          <div class="text-center mb-5">
-            <h3 class="title mb-3">Contact Us</h3>
+          <div class="text-center">
+            <h3 class="title mb-4">Claim Rewards</h3>
             <p class="text-muted font-size-15">
-              Et harum quidem rerum facilis est et expedita distinctio nam libero tempore
-              cum soluta nobis eligendi cumque.
+              coming VERY soon!
             </p>
           </div>
         </div>
       </div>
-      <div class="row align-items-center">
+      <!-- <div class="row align-items-center">
         <div class="col-lg-7">
           <div class="custom-form mb-5 mb-lg-0">
             <div id="message"></div>
@@ -42,13 +41,23 @@ export default {
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="name">Name*</label>
-                    <input id="name" type="text" class="form-control" placeholder="Your name..." />
+                    <input
+                      id="name"
+                      type="text"
+                      class="form-control"
+                      placeholder="Your name..."
+                    />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="email">Email Address*</label>
-                    <input id="email" type="email" class="form-control" placeholder="Your email..." />
+                    <input
+                      id="email"
+                      type="email"
+                      class="form-control"
+                      placeholder="Your email..."
+                    />
                   </div>
                 </div>
               </div>
@@ -101,7 +110,7 @@ export default {
             </p>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
   <!-- Contact Us End -->
