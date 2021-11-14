@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Oklg from "./Oklg.vue";
 import router from "./router";
+import store from "./vuex/store";
 
 import { BootstrapVue } from "bootstrap-vue";
 import VueYoutube from "vue-youtube";
@@ -29,5 +30,6 @@ Vue.use(BootstrapVue);
 
 new Vue({
   router,
+  store,
   render: (h) => h(Oklg),
 }).$mount("#oklg");

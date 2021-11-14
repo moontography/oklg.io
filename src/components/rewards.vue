@@ -7,6 +7,7 @@ import {
   ClockIcon,
   MapPinIcon,
 } from "vue-feather-icons";
+import { mapState } from "vuex";
 export default {
   components: {
     SendIcon,
@@ -15,6 +16,34 @@ export default {
     PhoneCallIcon,
     ClockIcon,
     MapPinIcon,
+  },
+
+  data() {
+    return {
+      // treasuryWallet: null,
+    };
+  },
+
+  computed: mapState({
+    oklgContract: (state) => state.oklgInst && state.oklgInst.oklg,
+    userAddress: (state) => state.web3.address,
+  }),
+
+  methods: {
+    async setConnectedState() {
+      // this.treasuryWallet = await this.oklgContract.methods
+      //   .treasuryWallet()
+      //   .call();
+    },
+
+    async web3Connect() {
+      try {
+        await this.$store.dispatch("init");
+        await this.setConnectedState();
+      } catch (err) {
+        console.error("error connecting to web3", err);
+      }
+    },
   },
 };
 </script>
@@ -27,8 +56,12 @@ export default {
           <div class="text-center">
             <h3 class="title mb-4">Claim Rewards</h3>
             <p class="text-muted font-size-15">
-              coming VERY soon!
+              coming soon!
             </p>
+            <!-- <div v-if="oklgContract">CONNECTED: {{ userAddress }}</div>
+            <button class="btn btn-primary" v-else @click="web3Connect">
+              Connect to your Wallet
+            </button> -->
           </div>
         </div>
       </div>

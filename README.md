@@ -1,4 +1,4 @@
-# oklg (\$OKLG)
+# ok.let's.go. (\$OKLG)
 
 ## Project setup
 

@@ -35,7 +35,7 @@
               </li>
               <li class="text-muted">2,500 holders</li>
               <li class="text-muted">CG and CMC Listing</li>
-              <li class="text-muted">ETH/token Rewards Dapp v1</li>
+              <li class="text-muted">Rewards Claim Dapp v1</li>
               <li class="text-muted">Marketing Rampage</li>
             </ul>
             <!-- <a
