@@ -33,9 +33,19 @@
                 <i class="mdi mdi-check-circle text-success"></i> ETH &lt;&gt;
                 BSC Bridge
               </li>
-              <li class="text-muted">2,500 holders</li>
-              <li class="text-muted">CG and CMC Listing</li>
-              <li class="text-muted">Rewards Claim Dapp v1</li>
+              <li class="text-muted">
+                <i class="mdi mdi-check-circle text-success"></i> 2,500 holders
+              </li>
+              <li class="text-muted">
+                <i class="mdi mdi-check-circle text-success"></i> CG Listing
+              </li>
+              <li class="text-muted">
+                CMC Listing
+              </li>
+              <li class="text-muted">
+                <i class="mdi mdi-check-circle text-success"></i> Rewards Claim
+                Dapp v1 (see below)
+              </li>
               <li class="text-muted">Marketing Rampage</li>
             </ul>
             <!-- <a

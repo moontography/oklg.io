@@ -1,4 +1,6 @@
 <script>
+import BigNumber from "bignumber.js";
+import dayjs from "dayjs";
 import {
   SendIcon,
   MailIcon,
@@ -20,20 +22,70 @@ export default {
 
   data() {
     return {
-      // treasuryWallet: null,
+      canClaimRewards: false,
+      calculateETHRewards: null,
+      lastRewardsClaim: null,
+      rewardsClaimTimeSeconds: null,
     };
   },
 
-  computed: mapState({
-    oklgContract: (state) => state.oklgInst && state.oklgInst.oklg,
-    userAddress: (state) => state.web3.address,
-  }),
+  computed: {
+    ...mapState({
+      oklgContract: (state) => state.oklgInst && state.oklgInst.oklg,
+      nativeSymbol: (_, getters) =>
+        getters.activeNetwork.native_currency.symbol,
+      userAddress: (state) => state.web3.address,
+    }),
+
+    canClaimAndHasRewards() {
+      return this.canClaimRewards && this.hasRewardsToClaim;
+    },
+
+    claimHumanReadableDate() {
+      return this.lastRewardsClaim != 0
+        ? dayjs(new BigNumber(this.lastRewardsClaim).times(1000).toNumber())
+            .add(this.rewardsClaimTimeSeconds, "seconds")
+            // .format("YYYY-MM-DD h:mm a")
+            .format("YYYY-MM-DD HH:mm")
+        : null;
+    },
+
+    hasRewardsToClaim() {
+      return new BigNumber(this.calculateETHRewards).gt(0);
+    },
+
+    rewardsHumanReadable() {
+      return new BigNumber(this.calculateETHRewards || 0)
+        .div(new BigNumber(10).pow(18))
+        .toFormat();
+    },
+  },
 
   methods: {
     async setConnectedState() {
-      // this.treasuryWallet = await this.oklgContract.methods
-      //   .treasuryWallet()
-      //   .call();
+      const [
+        canClaimRewards,
+        calculateETHRewards,
+        lastRewardsClaim,
+        rewardsClaimTimeSeconds,
+      ] = await Promise.all([
+        this.oklgContract.methods.canClaimRewards(this.userAddress).call(),
+        this.oklgContract.methods.calculateETHRewards(this.userAddress).call(),
+        this.oklgContract.methods
+          .getLastETHRewardsClaim(this.userAddress)
+          .call(),
+        this.oklgContract.methods.rewardsClaimTimeSeconds().call(),
+      ]);
+      this.canClaimRewards = canClaimRewards;
+      this.calculateETHRewards = calculateETHRewards;
+      this.lastRewardsClaim = lastRewardsClaim;
+      this.rewardsClaimTimeSeconds = rewardsClaimTimeSeconds;
+    },
+
+    async claimRewards() {
+      await this.oklgContract.methods
+        .claimETHRewards()
+        .send({ from: this.userAddress });
     },
 
     async web3Connect() {
@@ -55,13 +107,36 @@ export default {
         <div class="col-lg-6">
           <div class="text-center">
             <h3 class="title mb-4">Claim Rewards</h3>
-            <p class="text-muted font-size-15">
+            <!-- <p class="text-muted font-size-15">
               coming soon!
-            </p>
-            <!-- <div v-if="oklgContract">CONNECTED: {{ userAddress }}</div>
+            </p> -->
+            <div v-if="oklgContract">
+              <div class="mb-2">
+                Your share of the rewards pool is currently
+              </div>
+              <h4 class="mb-3">
+                {{ rewardsHumanReadable }} {{ nativeSymbol }}
+              </h4>
+              <button
+                class="btn btn-success"
+                v-if="canClaimAndHasRewards"
+                :disabled="!canClaimAndHasRewards"
+                @click="claimRewards"
+              >
+                Claim Your Rewards!
+              </button>
+              <div v-else>
+                You'll be able to claim
+                {{
+                  claimHumanReadableDate
+                    ? `at ${claimHumanReadableDate}`
+                    : "when you buy some $OKLG!"
+                }}
+              </div>
+            </div>
             <button class="btn btn-primary" v-else @click="web3Connect">
               Connect to your Wallet
-            </button> -->
+            </button>
           </div>
         </div>
       </div>
