@@ -82,8 +82,8 @@
                   2% BNB/ETH rewards
                 </h5>
                 <p class="text-muted mb-0 font-size-15 wc-subtitle">
-                  Every 4 hours following buy/sell/transfer, claim your share of
-                  BNB/ETH.
+                  Every several hours following buy/sell/transfer, claim your
+                  share of BNB/ETH.
                 </p>
               </div>
               <div class="wc-box rounded text-center wc-box-primary p-4">
@@ -94,9 +94,12 @@
                   2% buy back [and burn]
                 </h5>
                 <p class="text-muted mb-0 font-size-15 wc-subtitle">
-                  BRAND NEW: We built a mechanism to dynamically buy back any
-                  token. At that point we can burn them or distribute to $OKLG
-                  holders!
+                  BRAND NEW: We built a mechanism to dynamically buy back
+                  <i>any token,</i> including $OKLG.
+                  <b
+                    >At that point we can burn them or distribute to $OKLG
+                    holders!</b
+                  >
                 </p>
               </div>
             </div>

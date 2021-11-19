@@ -40,7 +40,7 @@
                 <i class="mdi mdi-check-circle text-success"></i> CG Listing
               </li>
               <li class="text-muted">
-                CMC Listing
+                <i class="mdi mdi-check-circle text-success"></i> CMC Listing
               </li>
               <li class="text-muted">
                 <i class="mdi mdi-check-circle text-success"></i> Rewards Claim

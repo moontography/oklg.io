@@ -10,6 +10,7 @@ import {
   MapPinIcon,
 } from "vue-feather-icons";
 import { mapState } from "vuex";
+import OKLG from "../factories/web3/OKLG";
 export default {
   components: {
     SendIcon,
@@ -26,16 +27,35 @@ export default {
       calculateETHRewards: null,
       lastRewardsClaim: null,
       rewardsClaimTimeSeconds: null,
+      eligibleForRewardBooster: null,
+      ethRewardsBalance: null,
     };
+  },
+
+  watch: {
+    async globalLoading(isLoading) {
+      if (isLoading) return;
+      await this.web3Connect();
+    },
   },
 
   computed: {
     ...mapState({
-      oklgContract: (state) => state.oklgInst && state.oklgInst.oklg,
+      globalLoading: (state) => state.globalLoading,
+      oklgContract: (state, getters) =>
+        getters.activeNetwork &&
+        getters.activeNetwork.contracts.oklg &&
+        OKLG(state.web3.instance, getters.activeNetwork.contracts.oklg),
       nativeSymbol: (_, getters) =>
         getters.activeNetwork.native_currency.symbol,
       userAddress: (state) => state.web3.address,
     }),
+
+    shortAddy() {
+      const f3 = this.userAddress.slice(0, 6);
+      const l3 = this.userAddress.slice(-4);
+      return `${f3}...${l3}`;
+    },
 
     canClaimAndHasRewards() {
       return this.canClaimRewards && this.hasRewardsToClaim;
@@ -59,33 +79,54 @@ export default {
         .div(new BigNumber(10).pow(18))
         .toFormat();
     },
+
+    poolSizeEth() {
+      return new BigNumber(this.ethRewardsBalance || 0)
+        .div(new BigNumber(10).pow(18))
+        .toFormat(4);
+    },
   },
 
   methods: {
     async setConnectedState() {
-      const [
-        canClaimRewards,
-        calculateETHRewards,
-        lastRewardsClaim,
-        rewardsClaimTimeSeconds,
-      ] = await Promise.all([
-        this.oklgContract.methods.canClaimRewards(this.userAddress).call(),
-        this.oklgContract.methods.calculateETHRewards(this.userAddress).call(),
-        this.oklgContract.methods
-          .getLastETHRewardsClaim(this.userAddress)
-          .call(),
-        this.oklgContract.methods.rewardsClaimTimeSeconds().call(),
-      ]);
-      this.canClaimRewards = canClaimRewards;
-      this.calculateETHRewards = calculateETHRewards;
-      this.lastRewardsClaim = lastRewardsClaim;
-      this.rewardsClaimTimeSeconds = rewardsClaimTimeSeconds;
+      try {
+        const [
+          canClaimRewards,
+          calculateETHRewards,
+          lastRewardsClaim,
+          rewardsClaimTimeSeconds,
+          eligibleForRewardBooster,
+          ethRewardsBalance,
+        ] = await Promise.all([
+          this.oklgContract.methods.canClaimRewards(this.userAddress).call(),
+          this.oklgContract.methods
+            .calculateETHRewards(this.userAddress)
+            .call(),
+          this.oklgContract.methods
+            .getLastETHRewardsClaim(this.userAddress)
+            .call(),
+          this.oklgContract.methods.rewardsClaimTimeSeconds().call(),
+          this.oklgContract.methods
+            .eligibleForRewardBooster(this.userAddress)
+            .call(),
+          this.oklgContract.methods.ethRewardsBalance().call(),
+        ]);
+        this.canClaimRewards = canClaimRewards;
+        this.calculateETHRewards = calculateETHRewards;
+        this.lastRewardsClaim = lastRewardsClaim;
+        this.rewardsClaimTimeSeconds = rewardsClaimTimeSeconds;
+        this.eligibleForRewardBooster = eligibleForRewardBooster;
+        this.ethRewardsBalance = ethRewardsBalance;
+      } catch (err) {
+        console.error(`Error fetching reward info`);
+      }
     },
 
     async claimRewards() {
       await this.oklgContract.methods
         .claimETHRewards()
         .send({ from: this.userAddress });
+      await this.setConnectedState();
     },
 
     async web3Connect() {
@@ -102,17 +143,24 @@ export default {
 <template>
   <!-- Contact Us Start -->
   <section class="section" id="rewards">
-    <div class="container">
+    <div v-if="globalLoading">...</div>
+    <div v-else class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6">
           <div class="text-center">
-            <h3 class="title mb-4">Claim Rewards</h3>
+            <h3 class="title mb-4">
+              Claim Rewards
+              <div v-if="userAddress">
+                <small>{{ shortAddy }}</small>
+              </div>
+            </h3>
             <!-- <p class="text-muted font-size-15">
               coming soon!
             </p> -->
             <div v-if="oklgContract">
               <div class="mb-2">
-                Your share of the rewards pool is currently
+                Your share of the rewards pool
+                <b>({{ poolSizeEth }} {{ nativeSymbol }})</b> is currently
               </div>
               <h4 class="mb-3">
                 {{ rewardsHumanReadable }} {{ nativeSymbol }}

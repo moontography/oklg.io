@@ -103,6 +103,32 @@ export default {
                   <span class="ml-3">
                     <a
                       class="link"
+                      href="https://coinmarketcap.com/currencies/ok-lets-go/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        class="link_logo"
+                        src="@/assets/images/icons/cmc-sm.svg"
+                      />
+                    </a>
+                  </span>
+                  <span class="ml-3">
+                    <a
+                      class="link"
+                      href="https://www.coingecko.com/en/coins/ok-lets-go"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        class="link_logo"
+                        src="@/assets/images/icons/cg.png"
+                      />
+                    </a>
+                  </span>
+                  <span class="ml-3">
+                    <a
+                      class="link"
                       href="https://etherscan.io/token/0x5dbb9f64cd96e2dbbca58d14863d615b67b42f2e"
                       target="_blank"
                       rel="noopener noreferrer"

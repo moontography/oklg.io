@@ -1,5 +1,5 @@
 import BigNumber from "bignumber.js";
-import OKLGWeb3 from "../../factories/OKLGWeb3";
+import Web3Modal from "../../factories/Web3Modal";
 import ERC20 from "../../factories/web3/ERC20";
 
 export default {
@@ -34,28 +34,26 @@ export default {
       // Remove loader to connect wallet
       commit("SET_INIT_LOADING", false);
 
-      const connected = await OKLGWeb3.connect();
-      if (!connected) throw new Error("error connecting to web3");
-      commit("SET_OKLG_INST", OKLGWeb3);
-      // commit("SET_WEB3_PROVIDER", provider);
-      commit("SET_WEB3_INSTANCE", OKLGWeb3.web3);
+      const { provider, web3 } = await Web3Modal.connect();
+      commit("SET_WEB3_PROVIDER", provider);
+      commit("SET_WEB3_INSTANCE", web3);
       commit("SET_WEB3_IS_CONNECTED", true);
 
       // Add loader back
       commit("SET_INIT_LOADING", true);
 
-      // const resetConnection = async () => {
-      //   dispatch("disconnect");
-      //   // const currentRoute = state.route;
-      //   // router.push("/redirecting");
-      //   // router.push(currentRoute);
-      //   await dispatch("init", true);
-      // };
-      // Web3Modal.bindProviderEvents({
-      //   accountsChanged: resetConnection,
-      //   chainChanged: resetConnection,
-      //   disconnect: () => dispatch("disconnect"),
-      // });
+      const resetConnection = async () => {
+        dispatch("disconnect");
+        // const currentRoute = state.route;
+        // router.push("/redirecting");
+        // router.push(currentRoute);
+        await dispatch("init", true);
+      };
+      Web3Modal.bindProviderEvents({
+        accountsChanged: resetConnection,
+        chainChanged: resetConnection,
+        disconnect: () => dispatch("disconnect"),
+      });
 
       commit("SET_WEB3_CHAIN_ID", await web3.eth.getChainId());
 
@@ -67,7 +65,6 @@ export default {
         );
       }
 
-      OKLGWeb3.setOklg(getters.activeNetwork.contracts.oklg);
       const [accountAddy] = await web3.eth.getAccounts();
       commit("SET_WEB3_USER_ADDRESS", accountAddy);
       // await dispatch("refreshable");
@@ -113,17 +110,16 @@ export default {
   //   await go();
   // },
 
-  // disconnect({ commit }) {
-  //   commit("SET_WEB3_PROVIDER", null);
-  //   commit("SET_WEB3_INSTANCE", null);
-  //   commit("SET_WEB3_IS_CONNECTED", false);
-  //   commit("SET_WEB3_CHAIN_ID", null);
-  //   commit("SET_WEB3_USER_ADDRESS", "");
-  //   commit("SET_TRUSTED_TIMESTAMPING_HASHES", []);
+  disconnect({ commit }) {
+    commit("SET_WEB3_PROVIDER", null);
+    commit("SET_WEB3_INSTANCE", null);
+    commit("SET_WEB3_IS_CONNECTED", false);
+    commit("SET_WEB3_CHAIN_ID", null);
+    commit("SET_WEB3_USER_ADDRESS", "");
 
-  //   // Clear cached provider to be able to switch between providers when disconnecting wallet
-  //   Web3Modal.clearCachedProvider();
-  // },
+    // Clear cached provider to be able to switch between providers when disconnecting wallet
+    Web3Modal.clearCachedProvider();
+  },
 
   async getCurrentBlock({ state, commit }) {
     const web3 = state.web3.instance;
