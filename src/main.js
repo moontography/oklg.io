@@ -9,6 +9,15 @@ import VueYoutube from "vue-youtube";
 import Scrollspy from "vue2-scrollspy";
 var VueScrollTo = require("vue-scrollto");
 
+import Toast, { POSITION } from "vue-toastification";
+import "vue-toastification/dist/index.css";
+
+const options = {
+  position: POSITION.TOP_RIGHT,
+  timeout: 4000,
+  containerClassName: "ct-notification",
+};
+
 import hljs from "highlightjs";
 import hljsDefineSolidity from "highlightjs-solidity";
 
@@ -24,6 +33,8 @@ Vue.use(VueYoutube);
 
 Vue.use(Scrollspy);
 Vue.use(VueScrollTo);
+
+Vue.use(Toast, options);
 
 // Install BootstrapVue
 Vue.use(BootstrapVue);
