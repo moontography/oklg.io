@@ -41,6 +41,13 @@ export default {
               <div class="text-center">
                 <h1 class="text-white hero-6-title mb-3 line-height-1_4">
                   ok.let's.go.
+                  <br />
+                  <small>meets</small>
+                  <br />
+                  <img
+                    style="max-height: 80px"
+                    src="@/assets/images/mtgy_light.png"
+                  />oontography
                 </h1>
                 <p class="text-white-50 w-75 mb-5 mx-auto font-size-15">
                   culture, meme, community, utility

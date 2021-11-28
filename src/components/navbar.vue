@@ -58,20 +58,20 @@ export default {
     <div class="container">
       <!-- LOGO -->
       <a class="navbar-brand logo" href="/">
-        <!-- <img
-          src="@/assets/images/logo-dark.png"
+        <img
+          src="@/assets/images/oklg_mtgy_dark.png"
           alt
           class="logo-dark"
           height="24"
         />
         <img
-          src="@/assets/images/logo-light.png"
+          src="@/assets/images/oklg_mtgy_light.png"
           alt
           class="logo-light"
           height="24"
-        /> -->
-        <h1 class="logo-light text-white my-0">[oklg]</h1>
-        <h1 class="logo-dark my-0">[oklg]</h1>
+        />
+        <!-- <h1 class="logo-light text-white my-0">[oklg]</h1>
+        <h1 class="logo-dark my-0">[oklg]</h1> -->
       </a>
       <button
         class="navbar-toggler"
